@@ -1,0 +1,58 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 201
+  ClientWidth = 447
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 8
+    Width = 449
+    Height = 120
+    DataSource = DataSource1
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object ADOConnection1: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=SQLNCLI11.1;Persist Security Info=False;User ID=syscpd;' +
+      'Initial Catalog=testehihappens;Data Source=10.42.0.185;Initial F' +
+      'ile Name="";Server SPN=""'
+    Provider = 'SQLNCLI11.1'
+    Left = 184
+    Top = 136
+  end
+  object ADODataSet1: TADODataSet
+    Connection = ADOConnection1
+    Parameters = <>
+    Left = 272
+    Top = 136
+  end
+  object ADOQuery1: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <>
+    SQL.Strings = (
+      'select * from Estoque')
+    Left = 360
+    Top = 136
+  end
+  object DataSource1: TDataSource
+    DataSet = ADOQuery1
+    Left = 72
+    Top = 144
+  end
+end
