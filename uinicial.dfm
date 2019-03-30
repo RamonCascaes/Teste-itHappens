@@ -1,7 +1,7 @@
 object Form2: TForm2
   Left = 0
   Top = 0
-  Caption = 'Fini'
+  Caption = 'Menu'
   ClientHeight = 201
   ClientWidth = 447
   Color = clBtnFace
@@ -28,6 +28,10 @@ object Form2: TForm2
         Caption = 'Saida'
         OnClick = Saida1Click
       end
+    end
+    object Sair1: TMenuItem
+      Caption = 'Sair'
+      OnClick = Sair1Click
     end
   end
 end

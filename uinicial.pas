@@ -12,8 +12,10 @@ type
     Entrada1: TMenuItem;
     Entrada2: TMenuItem;
     Saida1: TMenuItem;
+    Sair1: TMenuItem;
     procedure Entrada2Click(Sender: TObject);
     procedure Saida1Click(Sender: TObject);
+    procedure Sair1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,6 +44,11 @@ begin
     s := Tfcontrole_saida.Create(nil);
     s.ShowModal;
     s.Destroy;
+end;
+
+procedure TForm2.Sair1Click(Sender: TObject);
+begin
+    Close;
 end;
 
 end.
