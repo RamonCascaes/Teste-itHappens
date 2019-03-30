@@ -24,15 +24,16 @@ type
     Label2: TLabel;
     Button3: TButton;
     Button4: TButton;
-    Button5: TButton;
+    Memo1: TMemo;
     procedure FormShow(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure ComboproChange(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    quatide : Currency;
+    quatidade : Currency;
     procedure Load_filial;
     procedure Load_produtos;
     function quantidade_produto(descri : string) : currency;
@@ -50,7 +51,12 @@ implementation
 procedure TForm1.Button3Click(Sender: TObject);
 var i : Integer;
 begin
-   //Memo1.Lines.Add(Combopro.Text);
+   Memo1.Lines.Add('Produto :'+Combopro.Text+'    Quatidade total:'+FloatToStr( quantidade_produto(Combopro.Text)));
+end;
+
+procedure TForm1.Button4Click(Sender: TObject);
+begin
+  quatidade := FloatToCurr(edt_qtdtotal.Text);
 end;
 
 procedure TForm1.ComboproChange(Sender: TObject);
@@ -87,13 +93,13 @@ end;
 function TForm1.quantidade_produto(descri : string): currency;
 begin
     if descri = 'Arroz' then
-        Result := 10 +  quatide
+        Result := 10 +  quatidade
     else if descri = 'Cuzcuz' then
-        Result := 10 +  quatide
+        Result := 10 +  quatidade
      else if descri = 'Farinha' then
-        Result := 10 +  quatide
+        Result := 10 +  quatidade
         else if descri = 'Bolacha' then
-          Result := 10 +  quatide
+          Result := 10 +  quatidade
           else
             Result := 0;
 

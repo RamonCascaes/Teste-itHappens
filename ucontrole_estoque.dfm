@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Controle de Estoque'
   ClientHeight = 273
-  ClientWidth = 523
+  ClientWidth = 518
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,23 +17,23 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 233
+    Width = 515
     Height = 273
     Align = alLeft
     TabOrder = 0
     object Label1: TLabel
-      Left = 19
-      Top = 196
+      Left = 27
+      Top = 149
       Width = 103
       Height = 13
       Caption = 'Qtd total do produto:'
     end
     object Label2: TLabel
-      Left = 24
-      Top = 140
-      Width = 76
+      Left = 54
+      Top = 178
+      Width = 80
       Height = 13
-      Caption = 'Add quantidade'
+      Caption = 'Add quantidade:'
     end
     object Combofil: TComboBox
       Left = 24
@@ -53,8 +53,8 @@ object Form1: TForm1
       OnChange = ComboproChange
     end
     object edit_qtdpro: TEdit
-      Left = 106
-      Top = 132
+      Left = 136
+      Top = 143
       Width = 81
       Height = 21
       TabOrder = 2
@@ -68,7 +68,7 @@ object Form1: TForm1
       TabOrder = 3
     end
     object Button2: TButton
-      Left = 108
+      Left = 105
       Top = 8
       Width = 75
       Height = 25
@@ -76,9 +76,9 @@ object Form1: TForm1
       TabOrder = 4
     end
     object edt_qtdtotal: TEdit
-      Left = 128
-      Top = 188
-      Width = 75
+      Left = 136
+      Top = 170
+      Width = 81
       Height = 21
       TabOrder = 5
     end
@@ -96,15 +96,17 @@ object Form1: TForm1
       Top = 240
       Width = 75
       Height = 25
-      Caption = 'Button4'
+      Caption = 'Salvar'
       TabOrder = 7
+      OnClick = Button4Click
     end
-    object Button5: TButton
-      Left = 89
-      Top = 240
-      Width = 75
-      Height = 25
-      Caption = 'Button4'
+    object Memo1: TMemo
+      Left = 250
+      Top = 48
+      Width = 257
+      Height = 217
+      Lines.Strings = (
+        '')
       TabOrder = 8
     end
   end

@@ -1,0 +1,27 @@
+Montar diagrama entidade relacionamento que representará como os dominios propostos serão criados no banco de dados(usar astah,draw.io ou similares)
+R =
+
+Escrever uma consuta que retorne todos os produtos com quatidade maior ou igual a 100
+  R=  
+    SELECT *from Estoque E
+    INNER JOIN Produto P on p.codigo = E.codpro
+    WHERE (e.qtdestoque - e.qtdpendente) >= 100;
+
+Esrever uma consulta que traga todos os produtos que tem estoque para a filial de código 60
+  R= 
+  Select *from Produto p 
+  inner join Filal F on P.codfil = F.codigo
+  where F.codigo = 60 
+
+Escrever uma consulta que liste todos os campos para o dominio PedidoEstoque e ItemPedidoEstoque filtrando apenas o produto
+de codigo 7993 
+  R = 
+  Select *from PedidoEstoque p 
+  inner join ItemPedidoEstoque I on P.codfil = I.codfil
+                                and p.codped = I.codped 
+  where p.codpro = 7993
+
+
+
+  
+        
