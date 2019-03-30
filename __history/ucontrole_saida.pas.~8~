@@ -1,4 +1,4 @@
-unit ucontrole_estoque;
+unit ucontrole_saida;
 
 interface
 
@@ -12,7 +12,7 @@ type Tprodutos = record
 end;
 
 type
-  TForm1 = class(TForm)
+  TFcontrole_saida = class(TForm)
     Panel1: TPanel;
     Combofil: TComboBox;
     Combopro: TComboBox;
@@ -27,6 +27,9 @@ type
     procedure FormShow(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure Edit_qtdChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,51 +48,74 @@ type
     Function Produto(Descri : string): string;
 
     Procedure LoadMemo;
+    Procedure SavePedido;
 
     Procedure Resetform;
   end;
 
 var
-  Form1: TForm1;
+  Fcontrole_entrada: TFcontrole_saida;
 
 implementation
 {$R *.dfm}
 
 { TForm1 }
 
-procedure TForm1.Button2Click(Sender: TObject);
+procedure TFcontrole_saida.Button2Click(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TForm1.Button3Click(Sender: TObject);
+procedure TFcontrole_saida.Button3Click(Sender: TObject);
 begin
    LoadMemo;
 end;
 
-procedure TForm1.Estoque;
+procedure TFcontrole_saida.Button4Click(Sender: TObject);
+begin
+    SavePedido;
+end;
+
+procedure TFcontrole_saida.Edit_qtdChange(Sender: TObject);
+begin
+   if StrToCurr(Edit_qtd.Text) > quantidade_produto(Combopro.Text)  then
+   begin
+      MessageDlg('Não pode ser maior que quantidade total do estoque');
+   end;
+
+end;
+
+procedure TFcontrole_saida.Estoque;
 begin
 
 end;
 
-function TForm1.Filial(descri: string): string;
+function TFcontrole_saida.Filial(descri: string): string;
 begin
     Result := descri;
 end;
 
-procedure TForm1.FormShow(Sender: TObject);
+procedure TFcontrole_saida.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+   case key of
+         VK_ESCAPE : Close;
+   end;
+end;
+
+procedure TFcontrole_saida.FormShow(Sender: TObject);
 begin
     Load_filial;
     Load_produtos;
     Resetform;
 end;
 
-procedure TForm1.ItemPedidoEstoque;
+procedure TFcontrole_saida.ItemPedidoEstoque;
 begin
 
 end;
 
-procedure TForm1.LoadMemo;
+procedure TFcontrole_saida.LoadMemo;
 begin
    Memo1.Lines.Add('Produto :'+Produto(Combopro.Text));
    Memo1.Lines.Add('Quantidade estoque    :'+FloatToStr( quantidade_produto(Combopro.Text)));
@@ -100,7 +126,7 @@ begin
 
 end;
 
-procedure TForm1.Load_filial;
+procedure TFcontrole_saida.Load_filial;
 begin
    Combofil.Items.Add('Selecione a filial');
    Combofil.Items.Add('Mateus Cidade Operária');
@@ -110,7 +136,7 @@ begin
 
 end;
 
-procedure TForm1.Load_produtos;
+procedure TFcontrole_saida.Load_produtos;
 begin
    Combopro.Items.Add('Selecione o produto');
    Combopro.Items.Add('Arroz');
@@ -120,27 +146,27 @@ begin
    Combopro.ItemIndex := 0;
 end;
 
-procedure TForm1.PedidoEstoque;
+procedure TFcontrole_saida.PedidoEstoque;
 begin
 
 end;
 
-function TForm1.Produto(Descri: string): string;
+function TFcontrole_saida.Produto(Descri: string): string;
 begin
    Result := Descri;
 end;
 
-function TForm1.quantidade_disponivel(estoque, pendente: Currency): Currency;
+function TFcontrole_saida.quantidade_disponivel(estoque, pendente: Currency): Currency;
 begin
    Result := (estoque-pendente);
 end;
 
-function TForm1.quantidade_pendente(valor: currency): currency;
+function TFcontrole_saida.quantidade_pendente(valor: currency): currency;
 begin
    Result := valor ;
 end;
 
-function TForm1.quantidade_produto(descri : string): currency;
+function TFcontrole_saida.quantidade_produto(descri : string): currency;
 begin
     if descri = 'Arroz' then
         Result := 10 +  quatidade
@@ -152,14 +178,17 @@ begin
           Result := 10 +  quatidade
           else
             Result := 0;
-
-
-
 end;
 
-procedure TForm1.Resetform;
+procedure TFcontrole_saida.Resetform;
 begin
    Edit_qtd.Text      := '0,00';
+end;
+
+procedure TFcontrole_saida.SavePedido;
+begin
+   Memo1.Clear;
+   LoadMemo;
 end;
 
 end.

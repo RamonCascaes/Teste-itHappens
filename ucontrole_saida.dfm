@@ -10,8 +10,10 @@ object Fcontrole_saida: TFcontrole_saida
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnKeyDown = FormKeyDown
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -96,6 +98,7 @@ object Fcontrole_saida: TFcontrole_saida
       Width = 75
       Height = 21
       TabOrder = 6
+      OnChange = Edit_qtdChange
     end
     object Button2: TButton
       Left = 432

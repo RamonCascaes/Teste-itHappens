@@ -1,7 +1,7 @@
-object Form1: TForm1
+object Fcontrole_entrada: TFcontrole_entrada
   Left = 0
   Top = 0
-  Caption = 'Controle de Estoque'
+  Caption = 'Entrada de Estoque'
   ClientHeight = 307
   ClientWidth = 518
   Color = clBtnFace
@@ -11,6 +11,7 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -21,12 +22,13 @@ object Form1: TForm1
     Height = 307
     Align = alLeft
     TabOrder = 0
+    ExplicitLeft = -5
     object Label2: TLabel
-      Left = 50
-      Top = 173
-      Width = 80
+      Left = 24
+      Top = 147
+      Width = 136
       Height = 13
-      Caption = 'Add quantidade:'
+      Caption = 'Add quantidade de entrada:'
     end
     object Label3: TLabel
       Left = 250
@@ -75,6 +77,7 @@ object Form1: TForm1
       Height = 25
       Caption = 'Salvar'
       TabOrder = 4
+      OnClick = Button4Click
     end
     object Memo1: TMemo
       Left = 250
@@ -87,8 +90,8 @@ object Form1: TForm1
       TabOrder = 5
     end
     object Edit_qtd: TEdit
-      Left = 136
-      Top = 168
+      Left = 24
+      Top = 166
       Width = 75
       Height = 21
       TabOrder = 6

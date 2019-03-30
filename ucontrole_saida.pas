@@ -28,6 +28,8 @@ type
     procedure Button3Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure Edit_qtdChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,6 +76,15 @@ begin
     SavePedido;
 end;
 
+procedure TFcontrole_saida.Edit_qtdChange(Sender: TObject);
+begin
+   if StrToCurr(Edit_qtd.Text) > quantidade_produto(Combopro.Text)  then
+   begin
+     // MessageBox('Não pode ser maior que quantidade total do estoque');
+   end;
+
+end;
+
 procedure TFcontrole_saida.Estoque;
 begin
 
@@ -82,6 +93,14 @@ end;
 function TFcontrole_saida.Filial(descri: string): string;
 begin
     Result := descri;
+end;
+
+procedure TFcontrole_saida.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+   case key of
+         VK_ESCAPE : Close;
+   end;
 end;
 
 procedure TFcontrole_saida.FormShow(Sender: TObject);

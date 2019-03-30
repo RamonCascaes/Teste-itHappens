@@ -1,4 +1,4 @@
-unit ucontrole_estoque;
+unit ucontrole_saida;
 
 interface
 
@@ -12,7 +12,7 @@ type Tprodutos = record
 end;
 
 type
-  TFcontrole_entrada = class(TForm)
+  TFcontrole_saida = class(TForm)
     Panel1: TPanel;
     Combofil: TComboBox;
     Combopro: TComboBox;
@@ -28,7 +28,6 @@ type
     procedure Button3Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
-    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -38,7 +37,7 @@ type
     procedure Load_produtos;
     function quantidade_produto(descri : string) : currency;
     function quantidade_pendente(valor : Currency) : currency;
-    function quantidade_disponivel(estoque,adicionada : Currency) :Currency;
+    function quantidade_disponivel(estoque,pendente : Currency) :Currency;
 
     Procedure Estoque;
     procedure PedidoEstoque;
@@ -53,70 +52,62 @@ type
   end;
 
 var
-  Fcontrole_entrada: TFcontrole_entrada;
+  Fcontrole_entrada: TFcontrole_saida;
 
 implementation
 {$R *.dfm}
 
 { TForm1 }
 
-procedure TFcontrole_entrada.Button2Click(Sender: TObject);
+procedure TFcontrole_saida.Button2Click(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TFcontrole_entrada.Button3Click(Sender: TObject);
+procedure TFcontrole_saida.Button3Click(Sender: TObject);
 begin
    LoadMemo;
 end;
 
-procedure TFcontrole_entrada.Button4Click(Sender: TObject);
+procedure TFcontrole_saida.Button4Click(Sender: TObject);
 begin
     SavePedido;
 end;
 
-procedure TFcontrole_entrada.Estoque;
+procedure TFcontrole_saida.Estoque;
 begin
 
 end;
 
-function TFcontrole_entrada.Filial(descri: string): string;
+function TFcontrole_saida.Filial(descri: string): string;
 begin
     Result := descri;
 end;
 
-procedure TFcontrole_entrada.FormKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-    case Key of
-         VK_ESCAPE : close;
-    end;
-end;
-
-procedure TFcontrole_entrada.FormShow(Sender: TObject);
+procedure TFcontrole_saida.FormShow(Sender: TObject);
 begin
     Load_filial;
     Load_produtos;
     Resetform;
 end;
 
-procedure TFcontrole_entrada.ItemPedidoEstoque;
+procedure TFcontrole_saida.ItemPedidoEstoque;
 begin
 
 end;
 
-procedure TFcontrole_entrada.LoadMemo;
+procedure TFcontrole_saida.LoadMemo;
 begin
    Memo1.Lines.Add('Produto :'+Produto(Combopro.Text));
-   Memo1.Lines.Add('Quantidade estoque     :'+FloatToStr( quantidade_produto(Combopro.Text)));
-   Memo1.Lines.Add('Quatidade  adicionada  :'+FloatToStr( quantidade_pendente(strtocurr(Edit_qtd.Text))));
-   Memo1.Lines.Add('Quatidade  total       :'+FloatToStr( quantidade_disponivel(
+   Memo1.Lines.Add('Quantidade estoque    :'+FloatToStr( quantidade_produto(Combopro.Text)));
+   Memo1.Lines.Add('Quatidade  pendente   :'+FloatToStr( quantidade_pendente(strtocurr(Edit_qtd.Text))));
+   Memo1.Lines.Add('Quatidade  disponivel :'+FloatToStr( quantidade_disponivel(
           quantidade_produto(Combopro.Text) ,quantidade_pendente(strtocurr(Edit_qtd.Text)))));
    Memo1.Lines.Add('-------------------------------');
 
 end;
 
-procedure TFcontrole_entrada.Load_filial;
+procedure TFcontrole_saida.Load_filial;
 begin
    Combofil.Items.Add('Selecione a filial');
    Combofil.Items.Add('Mateus Cidade Operária');
@@ -126,7 +117,7 @@ begin
 
 end;
 
-procedure TFcontrole_entrada.Load_produtos;
+procedure TFcontrole_saida.Load_produtos;
 begin
    Combopro.Items.Add('Selecione o produto');
    Combopro.Items.Add('Arroz');
@@ -136,27 +127,27 @@ begin
    Combopro.ItemIndex := 0;
 end;
 
-procedure TFcontrole_entrada.PedidoEstoque;
+procedure TFcontrole_saida.PedidoEstoque;
 begin
 
 end;
 
-function TFcontrole_entrada.Produto(Descri: string): string;
+function TFcontrole_saida.Produto(Descri: string): string;
 begin
    Result := Descri;
 end;
 
-function TFcontrole_entrada.quantidade_disponivel(estoque, adicionada: Currency): Currency;
+function TFcontrole_saida.quantidade_disponivel(estoque, pendente: Currency): Currency;
 begin
-   Result := (estoque+adicionada);
+   Result := (estoque-pendente);
 end;
 
-function TFcontrole_entrada.quantidade_pendente(valor: currency): currency;
+function TFcontrole_saida.quantidade_pendente(valor: currency): currency;
 begin
    Result := valor ;
 end;
 
-function TFcontrole_entrada.quantidade_produto(descri : string): currency;
+function TFcontrole_saida.quantidade_produto(descri : string): currency;
 begin
     if descri = 'Arroz' then
         Result := 10 +  quatidade
@@ -170,12 +161,12 @@ begin
             Result := 0;
 end;
 
-procedure TFcontrole_entrada.Resetform;
+procedure TFcontrole_saida.Resetform;
 begin
    Edit_qtd.Text      := '0,00';
 end;
 
-procedure TFcontrole_entrada.SavePedido;
+procedure TFcontrole_saida.SavePedido;
 begin
    Memo1.Clear;
    LoadMemo;

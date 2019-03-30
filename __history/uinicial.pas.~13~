@@ -16,7 +16,6 @@ type
     procedure Entrada2Click(Sender: TObject);
     procedure Saida1Click(Sender: TObject);
     procedure Sair1Click(Sender: TObject);
-    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -37,14 +36,6 @@ begin
     f :=  TFcontrole_entrada.Create(nil);
     f.ShowModal;
     f.Destroy;
-end;
-
-procedure TForm2.FormKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-   case Key of
-        VK_ESCAPE : Close;
-   end;
 end;
 
 procedure TForm2.Saida1Click(Sender: TObject);

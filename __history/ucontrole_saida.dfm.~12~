@@ -1,9 +1,9 @@
-object Fcontrole_entrada: TFcontrole_entrada
+object Fcontrole_saida: TFcontrole_saida
   Left = 0
   Top = 0
-  Caption = 'Entrada de Estoque'
+  Caption = 'Saida de Estoque'
   ClientHeight = 307
-  ClientWidth = 518
+  ClientWidth = 523
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -24,13 +24,14 @@ object Fcontrole_entrada: TFcontrole_entrada
     Height = 307
     Align = alLeft
     TabOrder = 0
-    ExplicitLeft = -5
+    ExplicitLeft = -36
+    ExplicitTop = -38
     object Label2: TLabel
-      Left = 24
-      Top = 147
-      Width = 136
+      Left = 56
+      Top = 152
+      Width = 80
       Height = 13
-      Caption = 'Add quantidade de entrada:'
+      Caption = 'Add quantidade:'
     end
     object Label3: TLabel
       Left = 250
@@ -60,7 +61,7 @@ object Fcontrole_entrada: TFcontrole_entrada
       Top = 8
       Width = 75
       Height = 25
-      Caption = 'Entrada'
+      Caption = 'Saida'
       TabOrder = 2
     end
     object Button3: TButton
@@ -92,8 +93,8 @@ object Fcontrole_entrada: TFcontrole_entrada
       TabOrder = 5
     end
     object Edit_qtd: TEdit
-      Left = 24
-      Top = 166
+      Left = 142
+      Top = 144
       Width = 75
       Height = 21
       TabOrder = 6
