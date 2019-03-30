@@ -1,0 +1,31 @@
+unit uunicial;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus;
+
+type
+  Tfnicial = class(TForm)
+    MainMenu1: TMainMenu;
+    Cadastro1: TMenuItem;
+    Produtos1: TMenuItem;
+    Filial1: TMenuItem;
+    Pedidos1: TMenuItem;
+    Entrada1: TMenuItem;
+    Saida1: TMenuItem;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fnicial: Tfnicial;
+
+implementation
+
+{$R *.dfm}
+
+end.

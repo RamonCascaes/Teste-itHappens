@@ -1,0 +1,121 @@
+object finicial: Tfinicial
+  Left = 0
+  Top = 0
+  Caption = 'finicial'
+  ClientHeight = 259
+  ClientWidth = 454
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object painel_filial: TPanel
+    Left = 0
+    Top = 0
+    Width = 454
+    Height = 259
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 168
+    ExplicitTop = 128
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object Label1: TLabel
+      Left = 101
+      Top = 22
+      Width = 40
+      Height = 13
+      Caption = 'C'#243'digo :'
+    end
+    object Label2: TLabel
+      Left = 88
+      Top = 49
+      Width = 53
+      Height = 13
+      Caption = 'Descri'#231#227'o :'
+    end
+    object Label3: TLabel
+      Left = 47
+      Top = 97
+      Width = 94
+      Height = 13
+      Caption = 'Filiais cadastradas :'
+    end
+    object Edit1: TEdit
+      Left = 147
+      Top = 19
+      Width = 76
+      Height = 21
+      TabOrder = 0
+    end
+    object Edit2: TEdit
+      Left = 147
+      Top = 46
+      Width = 173
+      Height = 21
+      TabOrder = 1
+    end
+    object Combo_filial: TComboBox
+      Left = 147
+      Top = 94
+      Width = 245
+      Height = 21
+      TabOrder = 2
+    end
+    object salvar: TButton
+      Left = 2
+      Top = 215
+      Width = 75
+      Height = 39
+      Caption = 'Salvar'
+      TabOrder = 3
+      OnClick = salvarClick
+    end
+    object deletar: TButton
+      Left = 78
+      Top = 214
+      Width = 75
+      Height = 42
+      Caption = 'Deletar'
+      TabOrder = 4
+    end
+    object Button1: TButton
+      Left = 371
+      Top = 215
+      Width = 75
+      Height = 39
+      Caption = 'Sair'
+      TabOrder = 5
+      OnClick = Button1Click
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 376
+    object Cadastro1: TMenuItem
+      Caption = 'Cadastro'
+      object Filial1: TMenuItem
+        Caption = 'Filial'
+        OnClick = Filial1Click
+      end
+      object Produtos1: TMenuItem
+        Caption = 'Produtos'
+        OnClick = Produtos1Click
+      end
+    end
+    object Pedidos1: TMenuItem
+      Caption = 'Pedidos'
+      object Entrada1: TMenuItem
+        Caption = 'Entrada'
+      end
+      object Saida1: TMenuItem
+        Caption = 'Saida'
+      end
+    end
+  end
+end
