@@ -1,5 +1,7 @@
 Montar diagrama entidade relacionamento que representará como os dominios propostos serão criados no banco de dados(usar astah,draw.io ou similares)
 R =
+    Filial é de N:1 em relação ao Estoque
+    Estoque para produto 1:N 
 
 Escrever uma consuta que retorne todos os produtos com quatidade maior ou igual a 100
   R=  

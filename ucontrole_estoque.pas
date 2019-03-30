@@ -12,7 +12,7 @@ type Tprodutos = record
 end;
 
 type
-  TForm1 = class(TForm)
+  TFcontrole_entrada = class(TForm)
     Panel1: TPanel;
     Combofil: TComboBox;
     Combopro: TComboBox;
@@ -37,7 +37,7 @@ type
     procedure Load_produtos;
     function quantidade_produto(descri : string) : currency;
     function quantidade_pendente(valor : Currency) : currency;
-    function quantidade_disponivel(estoque,pendente : Currency) :Currency;
+    function quantidade_disponivel(estoque,adicionada : Currency) :Currency;
 
     Procedure Estoque;
     procedure PedidoEstoque;
@@ -52,62 +52,62 @@ type
   end;
 
 var
-  Form1: TForm1;
+  Fcontrole_entrada: TFcontrole_entrada;
 
 implementation
 {$R *.dfm}
 
 { TForm1 }
 
-procedure TForm1.Button2Click(Sender: TObject);
+procedure TFcontrole_entrada.Button2Click(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TForm1.Button3Click(Sender: TObject);
+procedure TFcontrole_entrada.Button3Click(Sender: TObject);
 begin
    LoadMemo;
 end;
 
-procedure TForm1.Button4Click(Sender: TObject);
+procedure TFcontrole_entrada.Button4Click(Sender: TObject);
 begin
     SavePedido;
 end;
 
-procedure TForm1.Estoque;
+procedure TFcontrole_entrada.Estoque;
 begin
 
 end;
 
-function TForm1.Filial(descri: string): string;
+function TFcontrole_entrada.Filial(descri: string): string;
 begin
     Result := descri;
 end;
 
-procedure TForm1.FormShow(Sender: TObject);
+procedure TFcontrole_entrada.FormShow(Sender: TObject);
 begin
     Load_filial;
     Load_produtos;
     Resetform;
 end;
 
-procedure TForm1.ItemPedidoEstoque;
+procedure TFcontrole_entrada.ItemPedidoEstoque;
 begin
 
 end;
 
-procedure TForm1.LoadMemo;
+procedure TFcontrole_entrada.LoadMemo;
 begin
    Memo1.Lines.Add('Produto :'+Produto(Combopro.Text));
-   Memo1.Lines.Add('Quantidade estoque    :'+FloatToStr( quantidade_produto(Combopro.Text)));
-   Memo1.Lines.Add('Quatidade  pendente   :'+FloatToStr( quantidade_pendente(strtocurr(Edit_qtd.Text))));
-   Memo1.Lines.Add('Quatidade  disponivel :'+FloatToStr( quantidade_disponivel(
+   Memo1.Lines.Add('Quantidade estoque     :'+FloatToStr( quantidade_produto(Combopro.Text)));
+   Memo1.Lines.Add('Quatidade  adicionada  :'+FloatToStr( quantidade_pendente(strtocurr(Edit_qtd.Text))));
+   Memo1.Lines.Add('Quatidade  total       :'+FloatToStr( quantidade_disponivel(
           quantidade_produto(Combopro.Text) ,quantidade_pendente(strtocurr(Edit_qtd.Text)))));
    Memo1.Lines.Add('-------------------------------');
 
 end;
 
-procedure TForm1.Load_filial;
+procedure TFcontrole_entrada.Load_filial;
 begin
    Combofil.Items.Add('Selecione a filial');
    Combofil.Items.Add('Mateus Cidade Operária');
@@ -117,7 +117,7 @@ begin
 
 end;
 
-procedure TForm1.Load_produtos;
+procedure TFcontrole_entrada.Load_produtos;
 begin
    Combopro.Items.Add('Selecione o produto');
    Combopro.Items.Add('Arroz');
@@ -127,27 +127,27 @@ begin
    Combopro.ItemIndex := 0;
 end;
 
-procedure TForm1.PedidoEstoque;
+procedure TFcontrole_entrada.PedidoEstoque;
 begin
 
 end;
 
-function TForm1.Produto(Descri: string): string;
+function TFcontrole_entrada.Produto(Descri: string): string;
 begin
    Result := Descri;
 end;
 
-function TForm1.quantidade_disponivel(estoque, pendente: Currency): Currency;
+function TFcontrole_entrada.quantidade_disponivel(estoque, adicionada: Currency): Currency;
 begin
-   Result := (estoque-pendente);
+   Result := (estoque+adicionada);
 end;
 
-function TForm1.quantidade_pendente(valor: currency): currency;
+function TFcontrole_entrada.quantidade_pendente(valor: currency): currency;
 begin
    Result := valor ;
 end;
 
-function TForm1.quantidade_produto(descri : string): currency;
+function TFcontrole_entrada.quantidade_produto(descri : string): currency;
 begin
     if descri = 'Arroz' then
         Result := 10 +  quatidade
@@ -161,12 +161,12 @@ begin
             Result := 0;
 end;
 
-procedure TForm1.Resetform;
+procedure TFcontrole_entrada.Resetform;
 begin
    Edit_qtd.Text      := '0,00';
 end;
 
-procedure TForm1.SavePedido;
+procedure TFcontrole_entrada.SavePedido;
 begin
    Memo1.Clear;
    LoadMemo;
