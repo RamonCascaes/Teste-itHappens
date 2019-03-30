@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Controle de Estoque'
-  ClientHeight = 273
+  ClientHeight = 307
   ClientWidth = 518
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,22 +18,23 @@ object Form1: TForm1
     Left = 0
     Top = 0
     Width = 515
-    Height = 273
+    Height = 307
     Align = alLeft
     TabOrder = 0
-    object Label1: TLabel
-      Left = 27
-      Top = 149
-      Width = 103
-      Height = 13
-      Caption = 'Qtd total do produto:'
-    end
+    ExplicitLeft = -5
     object Label2: TLabel
-      Left = 54
-      Top = 178
+      Left = 56
+      Top = 152
       Width = 80
       Height = 13
       Caption = 'Add quantidade:'
+    end
+    object Label3: TLabel
+      Left = 250
+      Top = 29
+      Width = 32
+      Height = 13
+      Caption = 'Pedido'
     end
     object Combofil: TComboBox
       Left = 24
@@ -50,14 +51,6 @@ object Form1: TForm1
       Height = 21
       TabOrder = 1
       Text = 'Selecione o produto'
-      OnChange = ComboproChange
-    end
-    object edit_qtdpro: TEdit
-      Left = 136
-      Top = 143
-      Width = 81
-      Height = 21
-      TabOrder = 2
     end
     object Button1: TButton
       Left = 24
@@ -65,22 +58,7 @@ object Form1: TForm1
       Width = 75
       Height = 25
       Caption = 'Entrada'
-      TabOrder = 3
-    end
-    object Button2: TButton
-      Left = 105
-      Top = 8
-      Width = 75
-      Height = 25
-      Caption = 'Saida'
-      TabOrder = 4
-    end
-    object edt_qtdtotal: TEdit
-      Left = 136
-      Top = 170
-      Width = 81
-      Height = 21
-      TabOrder = 5
+      TabOrder = 2
     end
     object Button3: TButton
       Left = 24
@@ -88,16 +66,16 @@ object Form1: TForm1
       Width = 75
       Height = 25
       Caption = 'Add produto'
-      TabOrder = 6
+      TabOrder = 3
       OnClick = Button3Click
     end
     object Button4: TButton
-      Left = 8
-      Top = 240
+      Left = 1
+      Top = 278
       Width = 75
       Height = 25
       Caption = 'Salvar'
-      TabOrder = 7
+      TabOrder = 4
       OnClick = Button4Click
     end
     object Memo1: TMemo
@@ -107,7 +85,24 @@ object Form1: TForm1
       Height = 217
       Lines.Strings = (
         '')
-      TabOrder = 8
+      ReadOnly = True
+      TabOrder = 5
+    end
+    object Edit_qtd: TEdit
+      Left = 142
+      Top = 144
+      Width = 75
+      Height = 21
+      TabOrder = 6
+    end
+    object Button2: TButton
+      Left = 432
+      Top = 278
+      Width = 75
+      Height = 25
+      Caption = 'Sair'
+      TabOrder = 7
+      OnClick = Button2Click
     end
   end
 end
